@@ -1,18 +1,20 @@
 import { Form, Input, Button, Spin } from 'antd';
 import { Box, Heading } from '~/components/common';
+import { useSearchHandler } from '~/components/hooks';
 
 export function SearchBox() {
+  const { onQuerySubmit, isFetching, queries } = useSearchHandler();
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
-  };
-  const handleSubmit = (values: any) => {
-    console.log('Success:', values);
   };
   return (
     <>
       <Form
         name='search-form'
-        onFinish={handleSubmit}
+        initialValues={{
+          query: queries.query,
+        }}
+        onFinish={onQuerySubmit}
         onFinishFailed={onFinishFailed}
         autoComplete='off'
         layout='vertical'
@@ -33,6 +35,11 @@ export function SearchBox() {
           </Form.Item>
         </Box>
       </Form>
+      {isFetching ? (
+        <Box component='flex' className='w-full justify-center'>
+          <Spin size='small' />
+        </Box>
+      ) : null}
     </>
   );
 }
