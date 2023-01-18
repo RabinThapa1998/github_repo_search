@@ -1,3 +1,5 @@
+import { SearchDetailPageComponent } from '~/components';
+
 export function Details() {
-  return <div>Details</div>;
+  return <SearchDetailPageComponent />;
 }
