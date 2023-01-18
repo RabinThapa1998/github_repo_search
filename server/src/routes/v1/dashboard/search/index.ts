@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { postSearchRouter } from "./post";
+import { getSearchRouter } from "./get";
 
 const router = Router();
-router.use(postSearchRouter);
+router.use(getSearchRouter);
 
 export { router as indexSearchRouter };
