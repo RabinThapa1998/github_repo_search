@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.site-layout-background {
+  margin: 1.25rem clamp(0.625rem, 5vw, 6.25rem);
+  padding: clamp(0.3125rem, 2vw, 1.5rem);
+  minheight: 100vh;
+}
+
+.site-layout .site-layout-background {
+  background: #fdfdfd;
+  min-height: 84vh;
+}

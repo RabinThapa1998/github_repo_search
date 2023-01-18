@@ -1,0 +1,9 @@
+node_modules
+Dockerfile
+dockerExecSteps
+.gitignore
+.git
+.dockerignore
+.env
+.env-local
+.env-example
