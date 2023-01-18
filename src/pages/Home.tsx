@@ -1,3 +1,9 @@
+import { SearchBox } from '~/components';
+
 export function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <SearchBox />
+    </>
+  );
 }
