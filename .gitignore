@@ -25,3 +25,5 @@ dist-ssr
 #envs
 .env
 .env.local
+
+.vscode
