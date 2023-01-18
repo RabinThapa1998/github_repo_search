@@ -2,6 +2,8 @@ import { Home, Details } from '~/pages';
 import { createBrowserRouter, RouterProvider, Route, Link } from 'react-router-dom';
 import { LayoutComponent } from '~/components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { store } from '~/global-states/store/store';
+import { Provider } from 'react-redux';
 
 const router = createBrowserRouter([
   {
@@ -25,9 +27,11 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </Provider>
   );
 }
 
