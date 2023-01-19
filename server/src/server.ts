@@ -5,11 +5,16 @@ import cors from "cors";
 import { indexDashboardRouter } from "./routes/v1/dashboard";
 import { NotFoundError } from "./common/errors/not-found-error";
 import { errorHandler } from "./common/middlewares/error-handler";
+import config from "./config";
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -23,6 +28,6 @@ app.all("*", (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(8000, () => {
-  console.log("Listening on port 8000!");
+app.listen(config.app.port, () => {
+  console.log(`Listening on port ${config.app.port}`);
 });

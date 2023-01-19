@@ -1,3 +1,2 @@
-const API_SECTION = '/api/v1/dashboard';
-
-export const BASE_URL = `http://localhost:8000${API_SECTION}`;
+const dev = process.env.NODE_ENV !== 'production';
+export const BASE_URL = dev ? `http://localhost:8000` : process.env.BASE_URL;
