@@ -8,12 +8,7 @@ export const search = {
       method: 'GET',
     });
   },
-  // getRepos({ ownerName, repoName }: { ownerName: string; repoName: string }): Promise<Item> {
-  //   return request({
-  //     url: `/repos/${ownerName}/${repoName}`,
-  //     method: 'GET',
-  //   });
-  // },
+
   getUsers({ ownerName, repoName }: { ownerName: string; repoName: string }): Promise<IUsers> {
     return request({
       url: `/user?owner_name=${ownerName}&repo_name=${repoName}`,
