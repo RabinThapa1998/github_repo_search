@@ -11,22 +11,22 @@ export function SearchResultTable() {
 
   const { onQuerySubmit, isFetching, queryResult, error, queries } = useSearchHandler();
 
-  const tableRowFormatter = () => {
-    if (!queryResult?.items.length) return [];
-    return queryResult.items.map((item) => {
-      return {
-        key: item.id,
-        name: item.name,
-        author: item.owner.login,
-        number_of_stars: item.stargazers_count,
-        watchers: item.watchers_count,
-        forks: item.forks_count,
-        description: item.description,
-        updated_at: new Date(item.pushed_at).toLocaleDateString(),
-      };
-    });
-  };
-  const formattedData = useMemo(() => tableRowFormatter(), [queryResult]);
+  // const tableRowFormatter = () => {
+  //   if (!queryResult?.items.length) return [];
+  //   return queryResult.items.map((item) => {
+  //     return {
+  //       key: item.id,
+  //       name: item.name,
+  //       author: item.owner.login,
+  //       number_of_stars: item.stargazers_count,
+  //       watchers: item.watchers_count,
+  //       forks: item.forks_count,
+  //       description: item.description,
+  //       updated_at: new Date(item.pushed_at).toLocaleDateString(),
+  //     };
+  //   });
+  // };
+  // const formattedData = useMemo(() => tableRowFormatter(), [queryResult]);
   const handleSortChange = (value: Tsort) => {
     onQuerySubmit({ sort: value });
   };
@@ -93,7 +93,7 @@ export function SearchResultTable() {
       </Form>
 
       <Table
-        dataSource={formattedData}
+        dataSource={queryResult.items}
         columns={columns}
         sticky
         rowClassName={(record) => {

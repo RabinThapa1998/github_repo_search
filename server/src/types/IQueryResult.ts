@@ -1,12 +1,18 @@
-export interface IRepos {
+export interface IQueryResult {
+  total_count: number;
+  incomplete_results: boolean;
+  items: Item[];
+}
+
+export interface Item {
   id: number;
   node_id: string;
   name: string;
   full_name: string;
   private: boolean;
-  owner: IRepoOwner;
+  owner: Owner;
   html_url: string;
-  description: null;
+  description: string;
   fork: boolean;
   url: string;
   forks_url: string;
@@ -52,7 +58,7 @@ export interface IRepos {
   ssh_url: string;
   clone_url: string;
   svn_url: string;
-  homepage: null;
+  homepage: string;
   size: number;
   stargazers_count: number;
   watchers_count: number;
@@ -68,22 +74,34 @@ export interface IRepos {
   archived: boolean;
   disabled: boolean;
   open_issues_count: number;
-  license: null;
+  license: License | null;
   allow_forking: boolean;
   is_template: boolean;
   web_commit_signoff_required: boolean;
-  topics: any[];
-  visibility: string;
+  topics: string[];
+  visibility: Visibility;
   forks: number;
   open_issues: number;
   watchers: number;
-  default_branch: string;
-  temp_clone_token: null;
-  network_count: number;
-  subscribers_count: number;
+  default_branch: DefaultBranch;
+  score: number;
 }
 
-export interface IRepoOwner {
+export enum DefaultBranch {
+  Main = 'main',
+  Master = 'master',
+  The214X = '2.14.x',
+}
+
+export interface License {
+  key: string;
+  name: string;
+  spdx_id: string;
+  url: null | string;
+  node_id: string;
+}
+
+export interface Owner {
   login: string;
   id: number;
   node_id: string;
@@ -100,6 +118,15 @@ export interface IRepoOwner {
   repos_url: string;
   events_url: string;
   received_events_url: string;
-  type: string;
+  type: Type;
   site_admin: boolean;
+}
+
+export enum Type {
+  Organization = 'Organization',
+  User = 'User',
+}
+
+export enum Visibility {
+  Public = 'public',
 }
