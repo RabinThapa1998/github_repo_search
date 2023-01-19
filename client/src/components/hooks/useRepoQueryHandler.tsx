@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Item, IUsers } from '~/types';
+import { IUsers } from '~/types';
 import { search } from '~/services';
 
 export function useRepoQueryHandler({
@@ -11,11 +11,8 @@ export function useRepoQueryHandler({
 }) {
   return useQuery(
     ['SearchDetailRepoAPI', repoName, ownerName],
-    (): Promise<[Item, IUsers]> => {
-      return Promise.all([
-        search.getRepos({ ownerName, repoName }),
-        search.getUsers({ ownerName }),
-      ]);
+    (): Promise<IUsers> => {
+      return search.getUsers({ ownerName, repoName });
     },
     {
       enabled: !!ownerName && !!repoName,

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Space, Table } from 'antd';
 import { useRepoQueryHandler } from '~/components/hooks';
@@ -18,6 +18,10 @@ export function SearchDetailPageComponent() {
     ownerName: ownerName || '',
     repoName: params?.id || '',
   });
+  console.log(
+    '🚀 ~ file: SearchDetailPageComponents.tsx:21 ~ SearchDetailPageComponent ~ repoDetails',
+    repoDetails,
+  );
 
   const columns = [
     {
@@ -78,14 +82,14 @@ export function SearchDetailPageComponent() {
     },
   ];
   const tableRowFormatter = () => {
-    if (!repoDetails?.length) return undefined;
+    if (!repoDetails) return undefined;
     return [
       {
-        key: repoDetails[0].id,
-        owner_name: repoDetails[1]?.name || 'Not Available',
-        repository_name: repoDetails[0].name,
-        number_of_issues: repoDetails[0].open_issues_count,
-        default_branch: repoDetails[0].default_branch,
+        key: repoDetails.id,
+        owner_name: repoDetails.owner_name,
+        repository_name: repoDetails.repository_name,
+        number_of_issues: repoDetails.number_of_issues,
+        default_branch: repoDetails.default_branch,
       },
     ];
   };
