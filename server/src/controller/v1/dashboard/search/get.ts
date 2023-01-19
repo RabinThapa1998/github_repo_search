@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { BadRequestError } from "../../../../common/errors/bad-request-error";
-import { request } from "../../../../services/request";
+import { request } from "../../../../utils/request";
 import { IQueryResult } from "../../../../types/IQueryResult";
 
 export const getSearchHandler = async (req: Request, res: Response) => {
