@@ -19,15 +19,15 @@ install the dependencies
 ```bash
 cd github_repo_search
 
-cd client
-    yarn install
-    or
-    npm install
+ cd client
+     yarn install
+     or
+     npm install
 
-cd server
-    yarn install
-    or
-    npm install
+ cd server
+     yarn install
+     or
+     npm install
 ```
 
 ## Run the project
